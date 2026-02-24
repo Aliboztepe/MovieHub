@@ -1,0 +1,36 @@
+/* Error Messages */
+"error.invalidURL" = "Invalid URL";
+"error.noData" = "No data received";
+"error.decodingError" = "Failed to decode data";
+"error.serverError" = "Server error (%d)";
+"error.unauthorized" = "Unauthorized access";
+"error.unknown" = "Unknown error";
+
+/* Home Screen */
+"home.title" = "Movies";
+"home.popular" = "Popular";
+"home.topRated" = "Top Rated";
+"home.upcoming" = "Upcoming";
+
+/* Search */
+"search.title" = "Search";
+"search.placeholder" = "Search movies...";
+
+/* Favorites */
+"favorites.title" = "Favorites";
+"favorites.empty" = "You haven't added any favorite movies yet";
+
+/* Settings */
+"settings.title" = "Settings";
+"settings.theme" = "Theme";
+"settings.language" = "Language";
+"settings.theme.light" = "Light";
+"settings.theme.dark" = "Dark";
+"settings.theme.system" = "System";
+
+/* Common */
+"common.ok" = "OK";
+"common.cancel" = "Cancel";
+"common.error" = "Error";
+"common.loading" = "Loading...";
+"common.retry" = "Retry";

@@ -1,0 +1,36 @@
+/* Error Messages */
+"error.invalidURL" = "Geçersiz URL";
+"error.noData" = "Veri alınamadı";
+"error.decodingError" = "Veri işlenemedi";
+"error.serverError" = "Sunucu hatası (%d)";
+"error.unauthorized" = "Yetkisiz erişim";
+"error.unknown" = "Bilinmeyen hata";
+
+/* Home Screen */
+"home.title" = "Filmler";
+"home.popular" = "Popüler";
+"home.topRated" = "En İyi Puanlı";
+"home.upcoming" = "Yakında";
+
+/* Search */
+"search.title" = "Ara";
+"search.placeholder" = "Film ara...";
+
+/* Favorites */
+"favorites.title" = "Favoriler";
+"favorites.empty" = "Henüz favori film eklemediniz";
+
+/* Settings */
+"settings.title" = "Ayarlar";
+"settings.theme" = "Tema";
+"settings.language" = "Dil";
+"settings.theme.light" = "Açık";
+"settings.theme.dark" = "Koyu";
+"settings.theme.system" = "Sistem";
+
+/* Common */
+"common.ok" = "Tamam";
+"common.cancel" = "İptal";
+"common.error" = "Hata";
+"common.loading" = "Yükleniyor...";
+"common.retry" = "Tekrar Dene";
