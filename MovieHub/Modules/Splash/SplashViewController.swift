@@ -2,7 +2,7 @@ import UIKit
 
 class SplashViewController: UIViewController, SplashViewProtocol {
     
-    weak var presenter: SplashPresenterProtocol?
+    var presenter: SplashPresenterProtocol?
 
     private let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)

@@ -1,6 +1,12 @@
 import UIKit
 
+protocol MovieCategoryCellDelegate: AnyObject {
+    func didSelectMovie(_ movie: Movie)
+}
+
 class MovieCategoryCell: UITableViewCell {
+    weak var delegate: MovieCategoryCellDelegate?
+
     private var movies: [Movie] = []
     
     private let collectionView: UICollectionView = {
@@ -33,7 +39,7 @@ class MovieCategoryCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "posterCell")
+        collectionView.register(MoviePosterCell.self, forCellWithReuseIdentifier: "MoviePosterCell")
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -57,11 +63,18 @@ extension MovieCategoryCell: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "posterCell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoviePosterCell", for: indexPath) as? MoviePosterCell else {
+            return UICollectionViewCell()
+        }
         
-        cell.backgroundColor = .systemRed
-        cell.layer.cornerRadius = 8
+        let movie = movies[indexPath.item]
+        cell.configure(with: movie)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = movies[indexPath.item]
+        delegate?.didSelectMovie(movie)
     }
 }

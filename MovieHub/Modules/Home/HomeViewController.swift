@@ -1,7 +1,7 @@
 import UIKit
 
 class HomeViewController: UIViewController, HomeViewProtocol {
-    weak var presenter: HomePresenterProtocol?
+    var presenter: HomePresenterProtocol?
 
     private var popularMovies: [Movie] = []
     private var topRatedMovies: [Movie] = []
@@ -12,6 +12,13 @@ class HomeViewController: UIViewController, HomeViewProtocol {
         table.backgroundColor = DesignSystem.Colors.background
         table.separatorStyle = .none
         return table
+    }()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.hidesWhenStopped = true
+        
+        return indicator
     }()
     
     override func viewDidLoad() {
@@ -26,6 +33,7 @@ class HomeViewController: UIViewController, HomeViewProtocol {
         view.backgroundColor = DesignSystem.Colors.background
         
         view.addSubview(tableView)
+        view.addSubview(activityIndicator)
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -38,15 +46,23 @@ class HomeViewController: UIViewController, HomeViewProtocol {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
         tableView.register(MovieCategoryCell.self, forCellReuseIdentifier: "MovieCategoryCell")
     }
     
     func showLoading() {
-        
+        activityIndicator.startAnimating()
+        tableView.isHidden = true
     }
 
     func hideLoading() {
-        
+        activityIndicator.stopAnimating()
+        tableView.isHidden = false
     }
 
     func showMovies(popular: [Movie], topRated: [Movie], upcoming: [Movie]) {
@@ -57,11 +73,17 @@ class HomeViewController: UIViewController, HomeViewProtocol {
     }
 
     func showError(_ message: String) {
-        print("Error: \(message)")
+        let alert = UIAlertController(title: "common.error".localized(), message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "common.ok".localized(), style: .default))
+        present(alert, animated: true)
+    }
+    
+    func didSelectMovie(_ movie: Movie) {
+        presenter?.didSelectMovie(movie)
     }
 }
 
-extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate, MovieCategoryCellDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -75,6 +97,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
                 as? MovieCategoryCell else {
             return UITableViewCell()
         }
+        
+        cell.delegate = self
         
         switch indexPath.section {
         case 0:

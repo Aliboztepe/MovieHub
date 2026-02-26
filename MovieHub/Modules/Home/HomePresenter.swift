@@ -2,10 +2,11 @@ import Foundation
 
 class HomePresenter: HomePresenterProtocol {
     weak var view: HomeViewProtocol?
-    weak var interactor: HomeInteractorProtocol?
+    var interactor: HomeInteractorProtocol?
     var router: HomeRouterProtocol?
     
     func viewDidLoad() {
+        view?.showLoading()
         interactor?.fetchMovies()
     }
 
@@ -14,10 +15,12 @@ class HomePresenter: HomePresenterProtocol {
     }
 
     func fetchMoviesSuccess(popular: [Movie], topRated: [Movie], upcoming: [Movie]) {
+        view?.hideLoading()
         view?.showMovies(popular: popular, topRated: topRated, upcoming: upcoming)
     }
 
     func fetchMoviesFailed(error: NetworkError) {
+        view?.hideLoading()
         view?.showError(error.localizedDescription)
     }
 }
