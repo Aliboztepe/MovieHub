@@ -12,6 +12,12 @@
 "home.topRated" = "En İyi Puanlı";
 "home.upcoming" = "Yakında";
 
+/* Detail Screen */
+"detail.title" = "Film Detayı";
+"detail.vote" = "Ortalama Puan";
+"detail.date" = "Yayın Tarihi";
+"detail.overview" = "Konu Özeti";
+
 /* Search */
 "search.title" = "Ara";
 "search.placeholder" = "Film ara...";

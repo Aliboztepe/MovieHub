@@ -12,6 +12,12 @@
 "home.topRated" = "Top Rated";
 "home.upcoming" = "Upcoming";
 
+/* Detail Screen */
+"detail.title" = "Movie Detail";
+"detail.vote" = "Vote Average";
+"detail.date" = "Release Date";
+"detail.overview" = "Overview";
+
 /* Search */
 "search.title" = "Search";
 "search.placeholder" = "Search movies...";

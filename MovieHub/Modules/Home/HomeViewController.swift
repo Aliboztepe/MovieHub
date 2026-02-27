@@ -32,8 +32,7 @@ class HomeViewController: UIViewController, HomeViewProtocol {
         title = "home.title".localized()
         view.backgroundColor = DesignSystem.Colors.background
         
-        view.addSubview(tableView)
-        view.addSubview(activityIndicator)
+        view.addSubviews(tableView, activityIndicator)
 
         tableView.delegate = self
         tableView.dataSource = self

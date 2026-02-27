@@ -27,15 +27,15 @@ class SplashViewController: UIViewController, SplashViewProtocol {
     
     private func setupUI() {
         view.backgroundColor = DesignSystem.Colors.background
-
-        view.addSubview(activityIndicator)
+        
+        view.addSubviews(activityIndicator, logoImageView)
+        
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         
-        view.addSubview(logoImageView)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
