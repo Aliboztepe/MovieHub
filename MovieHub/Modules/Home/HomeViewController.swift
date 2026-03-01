@@ -21,6 +21,8 @@ class HomeViewController: UIViewController, HomeViewProtocol {
         return indicator
     }()
     
+    private let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +38,7 @@ class HomeViewController: UIViewController, HomeViewProtocol {
 
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.refreshControl = refreshControl
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -51,7 +54,12 @@ class HomeViewController: UIViewController, HomeViewProtocol {
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         tableView.register(MovieCategoryCell.self, forCellReuseIdentifier: "MovieCategoryCell")
+    }
+    
+    @objc func handleRefresh() {
+        presenter?.viewDidLoad()
     }
     
     func showLoading() {
@@ -62,6 +70,7 @@ class HomeViewController: UIViewController, HomeViewProtocol {
     func hideLoading() {
         activityIndicator.stopAnimating()
         tableView.isHidden = false
+        refreshControl.endRefreshing()
     }
 
     func showMovies(popular: [Movie], topRated: [Movie], upcoming: [Movie]) {
