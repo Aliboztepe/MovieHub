@@ -35,6 +35,8 @@ MovieHub/
 ├── Modules/
 │   ├── Splash/             # Splash module (View, Interactor, Presenter, Router, Contract)
 │   └── Home/               # Home module (View, Interactor, Presenter, Router, Contract)
+│   └── Detail/             # Detail module (View, Interactor, Presenter, Router, Contract)
+│   └── Search/             # Search module (View, Interactor, Presenter, Router, Contract)
 ├── Common/
 │   ├── Constants/          # App constants
 │   ├── Extensions/         # Swift extensions
