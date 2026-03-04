@@ -7,6 +7,7 @@
 "error.unknown" = "Unknown error";
 
 /* Home Screen */
+"home.tab" = "Homepage";
 "home.title" = "Movies";
 "home.popular" = "Popular";
 "home.topRated" = "Top Rated";
@@ -20,7 +21,9 @@
 
 /* Search */
 "search.title" = "Search";
+"search.tab" = "Search";
 "search.placeholder" = "Search movies...";
+"search.empty" = "No results found";
 
 /* Favorites */
 "favorites.title" = "Favorites";

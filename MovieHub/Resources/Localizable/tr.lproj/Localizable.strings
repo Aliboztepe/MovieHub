@@ -7,6 +7,7 @@
 "error.unknown" = "Bilinmeyen hata";
 
 /* Home Screen */
+"home.tab" = "Anasayfa";
 "home.title" = "Filmler";
 "home.popular" = "Popüler";
 "home.topRated" = "En İyi Puanlı";
@@ -20,7 +21,9 @@
 
 /* Search */
 "search.title" = "Ara";
+"search.tab" = "Ara";
 "search.placeholder" = "Film ara...";
+"search.empty" = "Sonuç bulunamadı";
 
 /* Favorites */
 "favorites.title" = "Favoriler";
